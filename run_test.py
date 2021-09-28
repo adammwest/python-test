@@ -18,7 +18,7 @@ def delay_print(text,delay=CHARACTER_DELAY_SECS,use_delay=DELAY_PRINT):
         print(text)
 
 def pre_checks():
-    print('prechecks... ',end='')
+    print('<python-test> pre-checks ',end='')
     print('PASS')
 
 def get_yn(text):

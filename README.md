@@ -39,6 +39,6 @@ python -m run_test
 
 * you should now see on your screen
 ```
-<python-test> pre-tests PASS
+<python-test> pre-checks PASS
 ```
 * now run it again and your good to go have fun
