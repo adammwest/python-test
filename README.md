@@ -23,7 +23,7 @@ use my phone :)
 
 ## installing on windows
 * install git - https://git-scm.com/
-* install python 3.8.11 - 
+* install python 3.8.11 - https://www.python.org/downloads/
 
 * open git bash in the directory you want 
 * and type the following
