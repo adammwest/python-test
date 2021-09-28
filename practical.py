@@ -1,4 +1,5 @@
-import os 
+import json
+from os import path as path_lib
 
 def example_1_fib():
     """
@@ -92,8 +93,11 @@ def example_4_classes():
             self.age = age # years
 
 
-    tiger = animal('tiger',160,10)
-    seal = animal('seal',50,17)
+    tiger = animal('orange menace',160,10)
+    seal = animal(name='chonk',weight=50,age=17)
+
+    tiger.weight # will result in 160
+    seal.name # will result in 'chonk'
 
 
 
@@ -104,7 +108,8 @@ def test_1():
     read - https://www.geeksforgeeks.org/how-to-read-from-a-file-in-python/
     
     """
-
+    # dont change json_path variable it is the relative path works ibn any location
+    json_path = path_lib.join(path_lib.abspath(__file__),'..\\task1.json')
     # line of code to read a file
         # print both key value pairs of the json object
     magic_word = None # change to read value in json
@@ -118,12 +123,10 @@ def test_2():
     but we will be searching for words ... a wordsearch
 
     """
-    path_to_wordsearch = ""
-    # load the document words.csv
-    # make a 2d  list
-    word_search = [[]]
+    path_to_wordsearch = path_lib.join(path_lib.abspath(__file__),'..\\wordsearch.csv')
+    # load the document wordsearch.csv
 
-    # find the position in the array that equals the magic word
+    # find the position in the array that equals the semi-colon there is only 1
     # i.e  word_search[x][y] = magic word, find x,y
     x = None
     y = None
@@ -133,10 +136,27 @@ def test_3():
     """
     regex and string manipulation
     """
+    test_string = 'the quick bro/wn fox jumpe/d over the lazy dog'
+    #regex cheat sheet - https://regexcheatsheet.com/
+    regex_1 = r'' #find 'quick'
+    regex_2 = r'' #find the 2nd 'the'
+    regex_3 = r'' #fill in
     return None
 
 def test_4():
-    pass
+    """
+    using api's
+    """
+
+def test5():
+    """
+    classes
+    """
+
+def test_6():
+    """
+    benchmarking and testing
+    """
 
     
 
