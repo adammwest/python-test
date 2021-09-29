@@ -43,7 +43,3 @@ python -m run_test
 * now run it again and your good to go have fun
 
 `note: if not contact adam`
-
-
-### todo
-* push and email denis
