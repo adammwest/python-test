@@ -1,6 +1,13 @@
 import json
 from os import path as path_lib
 
+class Test_Error(BaseException):
+        pass
+
+def check_test(l):
+    if False in l: 
+        raise Test_Error
+
 def example_1_fib():
     """
     this is a docstring it explaines what the function does
@@ -108,11 +115,10 @@ def test_1():
     read - https://www.geeksforgeeks.org/how-to-read-from-a-file-in-python/
     
     """
-    # dont change json_path variable it is the relative path works ibn any location
+    #relative path works anywhere
     json_path = path_lib.join(path_lib.abspath(__file__),'..\\task1.json')
-    # line of code to read a file
-        # print both key value pairs of the json object
-    magic_word = None # change to read value in json
+
+    magic_word = None
     return magic_word
 
 def test_2():
@@ -124,7 +130,6 @@ def test_2():
 
     """
     path_to_wordsearch = path_lib.join(path_lib.abspath(__file__),'..\\wordsearch.csv')
-    # load the document wordsearch.csv
 
     # find the position in the array that equals the semi-colon there is only 1
     # i.e  word_search[x][y] = magic word, find x,y
@@ -135,49 +140,173 @@ def test_2():
 def test_3():
     """
     regex and string manipulation
+    regex cheat sheet - https://regexcheatsheet.com/
+    use regex and string manipulation to retrive various parts of the string
+    and supply the index
+    so for fox and index of f the first letter of what your finding
+    (fox,17)
+    regex_1 find 'quick' and suppy index
+    regex_2 find the 2nd 'the'
+    regex_3 find the letter after u if the letter before is not q
+    sm_1 reverse the string
+    sm_2 slice the word dog off the string
     """
     test_string = 'the quick bro/wn fox jumpe/d over the lazy dog'
-    #regex cheat sheet - https://regexcheatsheet.com/
-    regex_1 = r'' #find 'quick'
-    regex_2 = r'' #find the 2nd 'the'
-    regex_3 = r'' #fill in
+    regex_1 = r'' 
+    regex_2 = r'' 
+    regex_3 = r''
+    sm_1 = ''
+    sm_2 = ''
     return None
 
-def test_4():
+def test_4(numbers_to_test: list):
     """
-    using api's
-    """
+    using api's to retrive something from a server
+    the endpoint is https://api.isevenapi.xyz/api/
+    look at example api response for an example url
 
-def test5():
+    in the parameters you will see 'numbers_to_test'
+
+    you will iterate over the list using a for loop
+    and create a new list that contains boolean data 
+    whether the number is even you have to use the api 
+    to assess wether the number is even 
+
+    you will need a libaray to complete this task
+
+    e.g
+    numbers_to_test = [1,2,3,4]
+    is_even = [False,True,False,True]
     """
-    classes
+    is_even = None
+    return is_even
+
+def test_5():
     """
+    classes 
+    first create a constructor - look at google if you dont know
+    after there should be an attribute called name and the constructor shouold set this name
+    after a method should be added called generate_name and should have a parameter called name_options
+    this function will return a randomly selected name from the list 
+    """
+    names = ['bob','jerry','sid']
+    class nameless():
+        pass
+
+    return nameless()
 
 def test_6():
     """
-    benchmarking and testing
-    """
+    benchmarking and iterators
+    now we will test some number functions for the speed of computation
+    take a look at https://stackoverflow.com/questions/25785243/understanding-time-perf-counter-and-time-process-time
+    you will need the time library for this
+    find all the times and return the lowest time as a number in one hot form
 
+
+    e.g if the answer is n1
+    funcs =                 [n0,n1,n2,n3,n4,n5]
+    fastest_func_one_hot =   [0, 1, 0, 0, 0, 0]
+
+    extra: find a new method which is faster than all examples
+    """
+    from operator import add
+
+    #start with this list 
+    #add 2 to all elements  in 5 different ways then eval uate the fastest
+    numbers = [i for i in range(1000)]
+
+    # use map and a lambda function
+    n0 = None
+
+    # change each element in the array by +2 (for loop)
+    n1 = None
+
+    # same thing but using list comprehension
+    n2 = None
+
+    # use map and add for this you need 2 lists
+    n3 = None
+
+    # use zip and sum with 2 lists
+    n4 = None
+
+    # extra
+    n5 = None
+
+    fastest_func_one_hot = [0,1,0,0,0] #change me
+    return fastest_func_one_hot
+
+
+
+def test_7():
+    """
+    unit testing
+    we wont be looking at unittest or pytest modules,
+    just covering the concepts to developing better code 
+    to test 1 we can do somthing like 
+
+    test = test_1() == expected_answer
+
+    there are end to end, integration, unit and functional tests
+    what we are doing here is unit testing
+    the value of testing increasing as the amount of people writing the code base and the size of the code base increases
+
+    the point of unit tests is to ensure a single function is behaving as expected 
+    then we know when debugging that a function is at least completeing the tasks that the test laid out
+    if you wrote the test wrong your assumptions about the test will be wrong
+
+    we are going to make some tests for your previous code 
+
+    I will do test 6 as an example and you need to complete test 4 
+    more reading - https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing#:~:text=The%20different%20types%20of%20tests%201%20Unit%20tests.,in%20a%20complete%20application%20environment.%20More%20items...%20
+
+    """
+    
+    # example test_6
+    result = test_6()
+    expected_result = [0,1,0,0,0] # not the right answer :) change me when you know the answer
+
+    # assumptions
+    # result is a list
+    # in said list there are only 0's nad 1's
+    # there is only one 1 
+    t6_0 = type(result) is list
+
+    # a set is unordered but there can only be a single value of each item so {1,1} is not a set {1} is
+    # we are testing the result when converted to a set which should be {1} {0} {0,1} is a subset of {0,1}
+    t6_1 = set(result).issubset({0,1}) 
+
+    # create a dictionary which stores key:value pairs
+    # key being each result so 0,1 and the value being the freuency
+    # update updates the dictionary with a new key:value pair it can overwrite
+    # so we update the old key:value pair with a new key:value+1 pair
+    # for every element in result
+    freq = {}
+    for i in result:
+        freq[i] = freq.get(i,0) + 1
+
+    t6_2 = freq[1] == 1
+
+    #check the statements are true
+    check_test([t6_0,t6_1,t6_2])
+
+
+    # unit test for test_4
+    check_test([])
+
+
+    t4_0 = None
+    return 
     
 
 
 
-def unit_test():
-    """
-    """
 
 
 
-def run_tests():
-    example_1_fib()
-    example_2_datatypes()
-    example_3_iterators()
-    example_4_classes()
-
-    test_1()
-
-
-
+def run_test():
+    return test_1(),test_2(),test_3(),test_4([1,56,79,10,32]),test_5(),test_6(),test_7()
 
 if __name__ == "__main__":
-    run_tests()
+    run_test()

@@ -1,13 +1,12 @@
 import os
 import time
 import sys
-import knowlage
-import practical
 import answers
+import practical2 as practical
 
-SKIP_CORRECT_QUESTIONS = True
-DELAY_PRINT = False
-CHARACTER_DELAY_SECS= 0.08
+DELAY_PRINT = True
+SHOW_BREAKDOWN = True
+CHARACTER_DELAY_SECS= 0.07
 
 
 def delay_print(text):
@@ -19,10 +18,6 @@ def delay_print(text):
             time.sleep(CHARACTER_DELAY_SECS)
     else:
         print(text)
-
-def pre_checks():
-    print('<python-test> pre-checks ',end='')
-    print('PASS')
 
 def get_yn(text):
     while True:
@@ -39,32 +34,36 @@ def get_yn(text):
 def clear_screen():
     os.system('cls')
 
+def pre_checks():
+    files_expected = ['answers.py','knowlage.py','practical.py','task1.json','wordsearch.csv']
+    files_in_dir = os.listdir(os.path.join(os.path.abspath(__file__),'../'))
+    print('<Python Test> pre-checks ',end='')
+
+    #check all files present
+    if set(files_expected).issubset(set(files_in_dir)) == True:
+        print('PASS')
+    else:
+        print('FAIL')
+        sys.exit(3)
+
 def run():
     global DELAY_PRINT
-    global SKIP_CORRECT_QUESTIONS
-    delay_print('hello denis, maybe janice?\nwelcome to adams test\nthere will be 2 sections\n1. knowlage section\n2. practical section\n')
+    global SHOW_BREAKDOWN
+
+    delay_print('Hello Denis, maybe Janice?\nWelcome to Adam\'s test\nGood luck\n')
     
-    if not get_yn('delayed text? (y/n) '):
+    if get_yn('Delayed text? (y/n) ') == False:
         DELAY_PRINT = False
 
-    if not get_yn('skip correct questions when restarting? (y/n) '):
-        SKIP_CORRECT_QUESTIONS = True
+    if get_yn('Show answer breakdown? (y/n) ') == False:
+        SHOW_BREAKDOWN = False
 
     clear_screen()
-    delay_print('Python-test\n')
+    p1,p2,p3,p4,p5,p6,p7 = practical.run_test()
 
+    P = answers.compare_practical_answers(SHOW_BREAKDOWN,p1,p2,p3,p4,p5,p6,p7)
 
-    knowlage_answers = knowlage.run_test()
-    practical_answers = practical.run_tests()
-
-    A = answers.compare_knowlage_answers(knowlage_answers)
-    B = answers.compare_practical_answers(practical_answers)
-
-    answers.print_final_score(A,B)
-
-    delay_print('Thats it!')
-    if get_yn('try again? (y/n)  '):
-        run()
+    delay_print('Thats it!\nThanks :)')
 
 
 

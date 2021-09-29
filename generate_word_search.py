@@ -7,9 +7,9 @@ s = 100
 SIZE = range(s)
 
 def calc_p(x,y):
-    #normalise to 0-1
     p = -1
     while (p == -1): 
+        #normalise to 0-1
         _x = x/s 
         _y = y/s
         domain = (s*s-1)/(s*s)
@@ -40,16 +40,3 @@ def print_wordsearch(ws):
         for y in SIZE:
             print(ws[x][y],end=' ')
 
-
-
-
-ws = generate()
-semi = ''.join(str(item) for innerlist in ws for item in innerlist).find(';')
-print_wordsearch(ws)
-
-
-
-
-with open(path_lib.join(path_lib.abspath(__file__),'..\\wordsearch.csv'),"w+") as my_csv:
-    csvWriter = csv.writer(my_csv,delimiter=',')
-    csvWriter.writerows(ws)
