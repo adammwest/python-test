@@ -2,7 +2,7 @@ import os
 import time
 import sys
 import answers
-import practical2 as practical
+import practical
 
 DELAY_PRINT = True
 SHOW_BREAKDOWN = True
