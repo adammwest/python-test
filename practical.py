@@ -144,7 +144,7 @@ def test_3():
     use regex and string manipulation to retrive various parts of the string
     and supply the index
     so for fox and index of f the first letter of what your finding
-    (fox,17)
+    (fox,17),(<word>,<index>),...
     regex_1 find 'quick' and suppy index
     regex_2 find the 2nd 'the'
     regex_3 find the letter after u if the letter before is not q
@@ -170,7 +170,7 @@ def test_4(numbers_to_test: list):
     you will iterate over the list using a for loop
     and create a new list that contains boolean data 
     whether the number is even you have to use the api 
-    to assess wether the number is even 
+    to assess whether the number is even 
 
     you will need a libaray to complete this task
 
