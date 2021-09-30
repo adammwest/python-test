@@ -173,6 +173,7 @@ def test_4(numbers_to_test: list):
     to assess whether the number is even 
 
     you will need a libaray to complete this task
+    google 'python GET requests' for help
 
     e.g
     numbers_to_test = [1,2,3,4]
